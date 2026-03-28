@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:persone/core/services/biometric_service.dart';
 import 'package:persone/screens/home_screen.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -7,6 +8,7 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final biometricService = BiometricService();
     return Scaffold(
       backgroundColor: Colors.black,
       body: Column(
@@ -30,13 +32,23 @@ class SplashScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: InkWell(
               borderRadius: BorderRadius.circular(4),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const HomeScreen(),
-                  ),
-                );
+              onTap: () async {
+                bool isAuthenticated = await biometricService.authenticate();
+
+                if (isAuthenticated) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const HomeScreen(),
+                    ),
+                  );
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text('Authentication failed'),
+                    ),
+                  );
+                }
               },
               child: Container(
                 width: double.infinity,
