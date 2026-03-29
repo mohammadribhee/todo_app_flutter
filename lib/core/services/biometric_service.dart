@@ -19,9 +19,6 @@ class BiometricService {
 
       return didAuthenticate;
     } catch (e) {
-      print("/////////////////////////////////////////////");
-      print(e);
-      print("/////////////////////////////////////////////");
       return false;
     }
   }

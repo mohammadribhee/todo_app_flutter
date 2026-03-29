@@ -4,11 +4,10 @@ import 'package:persone/core/services/biometric_service.dart';
 import 'package:persone/screens/home_screen.dart';
 
 class SplashScreen extends StatelessWidget {
-  const SplashScreen({super.key});
-
+  SplashScreen({super.key});
+  final biometricService = BiometricService();
   @override
   Widget build(BuildContext context) {
-    final biometricService = BiometricService();
     return Scaffold(
       backgroundColor: Colors.black,
       body: Column(
