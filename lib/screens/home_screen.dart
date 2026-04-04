@@ -7,54 +7,60 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
         backgroundColor: Colors.black,
-        elevation: 0,
-        centerTitle: true,
-        title: const Text(
-          'Home',
-          style: TextStyle(color: Colors.white),
+        appBar: AppBar(
+          backgroundColor: Colors.black,
+          elevation: 0,
+          centerTitle: true,
+          title: const Text(
+            'Home',
+            style: TextStyle(color: Colors.white),
+          ),
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(right: 16),
+              child: Icon(Icons.calendar_today_outlined, color: Colors.white),
+            ),
+          ],
         ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 16),
-            child: Icon(Icons.calendar_today_outlined, color: Colors.white),
-          ),
-        ],
-      ),
-      body: Column(
-        children: [
-          const SizedBox(height: 100),
-          Center(
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Spacer(),
+            Center(
               child: SvgPicture.asset(
-            'assets/icons/todo.svg',
-            width: 227,
-          )),
-          const SizedBox(height: 20),
-          const Text(
-            'What do you want to do today?',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 18,
+                'assets/icons/todo.svg',
+                width: 227,
+              ),
             ),
-          ),
-          const SizedBox(height: 10),
-          const Text(
-            'Tap + to add your tasks',
-            style: TextStyle(
-              color: Colors.grey,
-              fontSize: 14,
+            SizedBox(height: 20),
+            Text(
+              'What do you want to do today?',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+              ),
             ),
+            SizedBox(height: 10),
+            Text(
+              'Tap + to add your tasks',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: 14,
+              ),
+            ),
+            Spacer(),
+          ],
+        ),
+        floatingActionButton: Padding(
+          padding: const EdgeInsets.only(bottom: 10, right: 10),
+          child: FloatingActionButton(
+            backgroundColor: const Color(0xFF8687E7),
+            onPressed: () {},
+            child: const Icon(Icons.add, color: Colors.white),
           ),
-          const Spacer(),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color(0xFF8687E7),
-        onPressed: () {},
-        child: const Icon(Icons.add, color: Colors.white),
-      ),
-    );
+        ));
   }
 }
