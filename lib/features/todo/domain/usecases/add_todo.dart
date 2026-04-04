@@ -9,8 +9,4 @@ class AddTodo {
   Future<void> call(Todo todo) async {
     await repository.addTodo(todo);
   }
-
-  Future<void> toggleTodo(String id) async {
-    await repository.toggleTodo(id);
-  }
 }
